@@ -1,0 +1,29 @@
+{
+  "name": "deployment_framework",
+  "version": "1.0.0",
+  "description": "a framework for deployment ",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ALMANIFI/deployment.git"
+  },
+  "keywords": [
+    "deployment",
+    "framework"
+  ],
+  "author": "Omar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ALMANIFI/deployment/issues"
+  },
+  "homepage": "https://github.com/ALMANIFI/deployment/Dep#readme",
+  "devDependencies": {
+    "electron": "^35.1.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.5"
+  }
+}

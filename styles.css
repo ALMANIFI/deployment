@@ -1,0 +1,82 @@
+.navbar-brand{
+    margin-left: 0.5rem ;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    height: 100vh;
+    }
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    border-top-right-radius: 15px;   /* Curves the top-right corner */
+    border-bottom-right-radius: 15px; /* Curves the bottom-right corner */
+    overflow: hidden; /* Ensures the curved corners are properly visible */
+    z-index: 10; /* Ensure the navbar is above other elements */
+    }
+
+.content {
+    margin-left: 250px;
+    white-space: nowrap;
+    z-index: 1; /* Ensure the content is clickable */
+    position: relative;
+    }
+
+.nav-item {
+    white-space: nowrap; /* Prevent text from wrapping to next line */
+    position: relative;
+    }
+
+.nav-item a {
+    display: block;
+    padding: 10px 15px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border-radius: 5px; /* Make sure the box has rounded corners */
+}
+
+.nav-item a:hover {
+    background-color: rgba(0, 0, 0, 0.2); 
+    border-radius: 5px;
+}
+
+.nav-item a.active {
+    background-color: #28a745; 
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+}
+
+.nav-item a:focus {
+    outline: none; 
+}
+
+h1 {
+    background-color: #125d24; 
+    padding: 8px;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+}
+
+
+
+@media screen {
+    .navbar .container-fluid,
+    .navbar-expand-lg .navbar-collapse,
+    .navbar-expand-lg .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar{
+        height: 100%;
+        width: 250px;
+        align-items: flex-start;
+    }
+}
+
