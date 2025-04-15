@@ -8,6 +8,7 @@ body {
     display: grid;
     grid-template-columns: 250px 1fr;
     height: 100vh;
+    overflow-x: hidden;
     }
 
 .navbar {
@@ -24,10 +25,11 @@ body {
 
 .content {
     margin-left: 250px;
-    white-space: nowrap;
     z-index: 1; /* Ensure the content is clickable */
-    position: relative;
+    position: fixed;
+
     }
+    
 
 .nav-item {
     white-space: nowrap; /* Prevent text from wrapping to next line */
@@ -58,12 +60,25 @@ body {
 }
 
 h1 {
-    background-color: #125d24; 
+    position: relative;
+    width: calc(100% + 2500px); /* Extend the width to include the navbar space */
+    background-color: #125d24;
     padding: 8px;
-    color: rgb(0, 0, 0);
+    color: #73d389;
     border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    overflow: hidden; /* Prevent content from overflowing */
 }
 
+.nav-item.user {
+    position: absolute;
+    bottom: 50px; /* Adjust as needed for spacing */
+    right: 30px;
+}
+
+.nav-item.user a {
+    text-align: center; /* Center the text */
+}
 
 
 @media screen {
@@ -74,8 +89,6 @@ h1 {
         align-items: flex-start;
     }
     .navbar{
-        height: 100%;
-        width: 250px;
         align-items: flex-start;
     }
 }

@@ -16,7 +16,11 @@
     <div class="container-fluid d-flex">
       <nav class="navbar bg-success">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Home</a>
+          
+          <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="images/logo.png" alt="Home Image" style="width: 30px; height: 30px; margin-right: 10px;">
+            Home
+          </a>
           <div id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -40,6 +44,9 @@
                   <li><a class="dropdown-item" href="Grafana/grafana.html">Grafana</a></li>
                 </ul>
               </li>
+              <li class="nav-item user">
+                <a class="nav-link" href="Registartion/registration.html">User Account</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -47,10 +54,72 @@
   
       <div class="content">
         <h1>System Overview</h1>
-        <p>hi my name is is is</p>
+        
+        <!-- Add a container for the boxes -->
+        <div class="box-container">
+          <div class="row">
+            <!-- Box 1: System Health Overview -->
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-header bg-success text-white">
+                  System Health Overview
+                </div>
+                <div class="card-body">
+                  <p><strong>Current System Status:</strong> All systems operational</p>
+                  <p><strong>Real-time Performance:</strong></p>
+                  <ul>
+                    <li>CPU Usage: 45%</li>
+                    <li>Memory Consumption: 3.2 GB</li>
+                    <li>Active Containers: 12</li>
+                  </ul>
+                  <p><strong>Notifications:</strong> No alerts at the moment.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Box 2: Key Metrics Visualization -->
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-header bg-primary text-white">
+                  Key Metrics Visualization
+                </div>
+                <div class="card-body">
+                  <p><strong>System Health Indicators:</strong> Graphs showing Docker, Kubernetes, and Apache Spark status.</p>
+                  <p><strong>Resource Utilization:</strong> CPU and memory usage visualized in bar charts.</p>
+                  <p><strong>Task Processing Status:</strong> 25 tasks processed, 23 succeeded, 2 failed.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Box 3: Microservices Deployment Status -->
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-header bg-warning text-dark">
+                  Microservices Deployment Status
+                </div>
+                <div class="card-body">
+                  <p><strong>Deployment Overview:</strong> 10 services running, 2 failed to deploy.</p>
+                  <p><strong>Scalability Status:</strong> Auto-scaling functioning properly. Resource scaling visualized in graphs.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Box 4: Fault Tolerance and Recovery Information -->
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-header bg-danger text-white">
+                  Fault Tolerance and Recovery Information
+                </div>
+                <div class="card-body">
+                  <p><strong>Recent Failures:</strong> Service X failed at 10:45 AM. Cause: Network timeout.</p>
+                  <p><strong>Recovery Status:</strong> Last failed service auto-recovered in 2 minutes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  
+  j
     <!-- JS -->
     <script src="renderer.js"></script>
     <script src="styling.js"></script>

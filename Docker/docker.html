@@ -10,53 +10,91 @@
     <link rel="stylesheet" href="../styles.css">
 
     <title>App</title>
-    
   </head>
-    <body class="p-3 m-0 border-0 bd-example m-0 border-0" style="background-color: #a8e4a0;">
-        <div class="container-fluid d-flex">
-            <nav class="navbar bg-success">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Docker</a>
-                    <div id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="../index.html">Dashboard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="docker.html">Docker</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Kubernetes/kubernetes.html">Kubernetes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Apache_Sparks/apache_spark.html">Apache Spark</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Monitoring
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="../Prometheus/prometheus.html">Prometheus</a></li>
-                                    <li><a class="dropdown-item" href="../Grafana/grafana.html">Grafana</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
 
-            <div class="content">
-                <h1>Containerization</h1>
-                <div class="mt-4">
-                  <input type="file" id="fileInput" class="form-control mb-3">
-                  <button type="button" class="btn btn-primary" id="createContainerButton">Containerize File</button>
-                </div>
-              </div>
+  <body class="p-3 m-0 border-0 bd-example m-0 border-0" style="background-color: #a8e4a0;">
+    <div class="container-fluid d-flex">
+      <nav class="navbar bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="../images/logo.png" alt="Home Image" style="width: 30px; height: 30px; margin-right: 10px;">
+                Docker
+              </a>
+          <div id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="docker.html">Docker</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../Kubernetes/kubernetes.html">Kubernetes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../Apache_Sparks/apache_spark.html">Apache Spark</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Monitoring
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="../Prometheus/prometheus.html">Prometheus</a></li>
+                  <li><a class="dropdown-item" href="../Grafana/grafana.html">Grafana</a></li>
+                </ul>
+              </li>
+              <li class="nav-item user">
+                <a class="nav-link" href="../Registartion/registration.html">User Account</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <!-- JS -->
-        <script src="docker.js"></script>
-        <script src="../renderer.js"></script>
-        <script src="../styling.js"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+      </nav>
+
+      <div class="content">
+        <h1>Containerization</h1>
+        <div class="mt-4">
+          <input type="file" id="fileInput" webkitdirectory directory class="form-control mb-3">
+          <button type="button" class="btn btn-primary" id="createContainerButton">Containerize File</button>
+        </div>
+
+        <!-- Dockerfile Inputs Section -->
+        <div id="dockerfileInputs" style="display:none;">
+          <h3>Fill in the Dockerfile Details</h3>
+          <label for="baseImage">Base Image (FROM):</label>
+          <input type="text" id="baseImage" placeholder="e.g., node:14" required class="form-control mb-2"><br>
+
+          <label for="copyFile">Copy File (COPY):</label>
+          <div id="copyFileContainer" class="mb-2">
+            <input type="text" id="copyFile" placeholder="e.g., ./app /app" required class="form-control mb-2">
+          </div>
+          <button type="button" id="addCopyFileButton" class="btn btn-secondary mb-3">Add More</button><br>
+
+          <label for="dependencies">Dependencies (RUN):</label>
+          <div id="dependenciesContainer" class="mb-2">
+            <input type="text" id="dependencies" placeholder="e.g., apt-get update && apt-get install -y python" required class="form-control mb-2">
+          </div>
+          <button type="button" id="addDependenciesButton" class="btn btn-secondary mb-3">Add More</button><br>
+
+          <label for="ports">Ports (EXPOSE):</label>
+          <div id="portsContainer" class="mb-2">
+            <input type="number" id="ports" placeholder="e.g., 8080" required class="form-control mb-2">
+          </div>
+          <button type="button" id="addPortsButton" class="btn btn-secondary mb-3">Add More</button><br>
+
+          <label for="command">Command to Run (CMD):</label>
+          <input type="text" id="command" placeholder="e.g., node /app/server.js" required class="form-control mb-2"><br>
+
+          <button type="button" id="generateDockerfileButton" class="btn btn-success">Generate Dockerfile</button>
+        </div>
+
+        <!-- Result Section -->
+        <div id="result" style="margin-top: 20px;"></div>
+      </div>
+    </div>
+
+    <!-- JS -->
+    <script src="docker.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

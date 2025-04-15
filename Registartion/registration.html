@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <title>System Registration</title>
+  </head>
+  <body class="p-3 m-0 border-0 bd-example m-0 border-0" style="background-color: #a8e4a0;">
+    <div class="content">
+      <h1 class="text-center" style="color: #125d24;">System Registration</h1>
+
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-4">
+            <!-- Action set to redirect to index.html -->
+            <form action="../index.html" method="GET">
+              <div class="mb-3">
+                <label for="username" class="form-label" style="color: #125d24;">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter your username" style="border-radius: 5px;">
+              </div>
+
+              <div class="mb-3">
+                <label for="password" class="form-label" style="color: #125d24;">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password" style="border-radius: 5px;">
+              </div>
+
+              <button type="submit" class="btn btn-success w-100" style="border-radius: 5px;">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS -->
+    <script src="renderer.js"></script>
+    <script src="styling.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
