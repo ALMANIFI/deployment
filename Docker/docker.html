@@ -12,7 +12,9 @@
     <title>App</title>
   </head>
 
-  <body class="p-3 m-0 border-0 bd-example m-0 border-0" style="background-color: #a8e4a0;">
+  <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+    <div class="background-overlay"></div>
+    <img src="../images/background.jpg" alt="Original image is sharp" class="background-image" />
     <div class="container-fluid d-flex">
       <nav class="navbar bg-success">
         <div class="container-fluid">
@@ -53,43 +55,55 @@
 
       <div class="content">
         <h1>Containerization</h1>
-        <div class="mt-4">
-          <input type="file" id="fileInput" webkitdirectory directory class="form-control mb-3">
-          <button type="button" class="btn btn-primary" id="createContainerButton">Containerize File</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ContainerModal">Create a container</button>
+      </div>
+      <div class="modal fade" id="ContainerModal" tabindex="-1" role="dialog" aria-labelledby="ContainerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ContainerModalLabel">Container</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mt-4">
+                 <button type="button" class="btn btn-secondary mb-3" id="dockerfileButton">Choose a folder</button>
+                 <p id="file"></p>
+                <button type="button" class="btn btn-primary" id="addConfigs" disabled>Add Configs</button>
+              </div>
+              <div id="dockerfileInputs" style="display:none;">
+                <h3>Fill in the Dockerfile Details</h3>
+                <label for="baseImage">Base Image (FROM):</label>
+                <input type="text" id="baseImage" placeholder="e.g., node:14" required class="form-control mb-2"><br>
+      
+                <label for="copyFile">Copy File (COPY):</label>
+                <div id="copyFileContainer" class="mb-2">
+                  <input type="text" id="copyFile" placeholder="e.g., ./app /app" required class="form-control mb-2">
+                </div>
+                <button type="button" id="addCopyFileButton" class="btn btn-secondary mb-3">Add More</button><br>
+      
+                <label for="dependencies">Dependencies (RUN):</label>
+                <div id="dependenciesContainer" class="mb-2">
+                  <input type="text" id="dependencies" placeholder="e.g., apt-get update && apt-get install -y python" required class="form-control mb-2">
+                </div>
+                <button type="button" id="addDependenciesButton" class="btn btn-secondary mb-3">Add More</button><br>
+      
+                <label for="ports">Ports (EXPOSE):</label>
+                <div id="portsContainer" class="mb-2">
+                  <input type="number" id="ports" placeholder="e.g., 8080" required class="form-control mb-2">
+                </div>
+                <button type="button" id="addPortsButton" class="btn btn-secondary mb-3">Add More</button><br>
+      
+                <label for="command">Command to Run (CMD):</label>
+                <input type="text" id="command" placeholder="e.g., node /app/server.js" required class="form-control mb-2"><br>
+      
+                <button type="button" id="generateDockerfileButton" class="btn btn-success">Generate Dockerfile</button>
+              </div>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+          </div>
         </div>
-
-        <!-- Dockerfile Inputs Section -->
-        <div id="dockerfileInputs" style="display:none;">
-          <h3>Fill in the Dockerfile Details</h3>
-          <label for="baseImage">Base Image (FROM):</label>
-          <input type="text" id="baseImage" placeholder="e.g., node:14" required class="form-control mb-2"><br>
-
-          <label for="copyFile">Copy File (COPY):</label>
-          <div id="copyFileContainer" class="mb-2">
-            <input type="text" id="copyFile" placeholder="e.g., ./app /app" required class="form-control mb-2">
-          </div>
-          <button type="button" id="addCopyFileButton" class="btn btn-secondary mb-3">Add More</button><br>
-
-          <label for="dependencies">Dependencies (RUN):</label>
-          <div id="dependenciesContainer" class="mb-2">
-            <input type="text" id="dependencies" placeholder="e.g., apt-get update && apt-get install -y python" required class="form-control mb-2">
-          </div>
-          <button type="button" id="addDependenciesButton" class="btn btn-secondary mb-3">Add More</button><br>
-
-          <label for="ports">Ports (EXPOSE):</label>
-          <div id="portsContainer" class="mb-2">
-            <input type="number" id="ports" placeholder="e.g., 8080" required class="form-control mb-2">
-          </div>
-          <button type="button" id="addPortsButton" class="btn btn-secondary mb-3">Add More</button><br>
-
-          <label for="command">Command to Run (CMD):</label>
-          <input type="text" id="command" placeholder="e.g., node /app/server.js" required class="form-control mb-2"><br>
-
-          <button type="button" id="generateDockerfileButton" class="btn btn-success">Generate Dockerfile</button>
-        </div>
-
-        <!-- Result Section -->
-        <div id="result" style="margin-top: 20px;"></div>
       </div>
     </div>
 
